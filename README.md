@@ -11,10 +11,10 @@ Users can add, edit, delete expenses and visualize their spending patterns using
   - Pie chart (category distribution)
   - Bar chart (monthly expenses)
 - Fully responsive and user-friendly interface
-- Clean architecture with separation of concerns
+
 
 ## 🛠 Tech Stack
-- Frontend: React.js, Axios, React Router DOM, Chart.js
+- Frontend: React.js, Axios, React Router DOM,   react-chartjs-2,lucide-react,chart.js,recharts
 - Backend: Node.js, Express.js, Mongoose
 - Database: MongoDB
 
@@ -29,5 +29,4 @@ expense-tracker/
 1. Backend: cd backend -> npm install -> npm start
 2. Frontend: cd frontend -> npm install -> npm start
 
-## 📑 License
-This project is licensed under the MIT License.
+
