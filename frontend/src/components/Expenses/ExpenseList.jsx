@@ -14,8 +14,6 @@ export default function ExpenseList({
   if (isLoading) {
     return <LoadingSpinner />;
   }
-  console.log(expenses);
-
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-full">

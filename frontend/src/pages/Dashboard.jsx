@@ -11,12 +11,10 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Load expenses on component mount
   useEffect(() => {
     fetchExpenses();
   }, []);
 
-  // Fetch expenses from API
   const fetchExpenses = async () => {
     setIsLoading(true);
     setError(null);
@@ -36,7 +34,7 @@ export default function DashboardPage() {
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Expense Dashboard</h1>
         <Link
-          to="/"
+          to="/expenses"
           className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors"
         >
           Manage Expenses
@@ -49,10 +47,8 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-lg shadow">
-          {/* Total expenses */}
           <ExpenseSummary expenses={expenses} isLoading={isLoading} />
 
-          {/* Pie Chart */}
           <div>
             <h3 className="text-lg font-medium mb-4">Expenses by Category</h3>
             <CategoryChart expenses={expenses} isLoading={isLoading} />
@@ -60,7 +56,6 @@ export default function DashboardPage() {
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow">
-          {/* Bar Chart */}
           <div>
             <h3 className="text-lg font-medium mb-4">Monthly Expenses</h3>
             <MonthlyChart expenses={expenses} isLoading={isLoading} />
