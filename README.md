@@ -11,10 +11,11 @@ Users can add, edit, delete expenses and visualize their spending patterns using
   - Pie chart (category distribution)
   - Bar chart (monthly expenses)
 - Fully responsive and user-friendly interface
+- Generate smart insights on the every expenses
 
 
 ## 🛠 Tech Stack
-- Frontend: React.js, Axios, React Router DOM,   react-chartjs-2,lucide-react,chart.js,recharts
+- Frontend: React.js, Axios, React Router DOM,react-chartjs-2,lucide-react,chart.js,recharts,openai
 - Backend: Node.js, Express.js, Mongoose
 - Database: MongoDB
 
