@@ -46,7 +46,6 @@ export default function ExpensesPage() {
   const handleExpenseSubmit = async (formData) => {
     setIsSubmitting(true);
     setError(null);
-    console.log(formData);
     try {
       if (editingId) {
         const updatedExpense = await apiService.updateExpense(

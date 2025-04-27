@@ -5,11 +5,13 @@ import CategoryChart from "../components/Dashboard/CategoryChart";
 import MonthlyChart from "../components/Dashboard/MonthlyChart";
 import ErrorMessage from "../components/Common/ErrorMessage";
 import { apiService } from "../services/apiService";
+import { generateSmartInsight } from "../services/aiService";
 
 export default function DashboardPage() {
   const [expenses, setExpenses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [insight, setInsight] = useState(""); // <-- Insight state added
 
   useEffect(() => {
     fetchExpenses();
@@ -22,6 +24,14 @@ export default function DashboardPage() {
     try {
       const data = await apiService.getExpenses();
       setExpenses(data);
+
+      // 🎯 Generate Smart Insight after fetching expenses
+      if (data.length > 0) {
+        const aiText = await generateSmartInsight(data);
+        setInsight(aiText);
+      } else {
+        setInsight("No expenses found to generate insights.");
+      }
     } catch (err) {
       setError("Failed to load expenses. Please try again later.");
     } finally {
@@ -43,6 +53,16 @@ export default function DashboardPage() {
 
       {error && (
         <ErrorMessage message={error} onDismiss={() => setError(null)} />
+      )}
+
+      {/* 🔥 Smart Insight Section */}
+      {insight && (
+        <div className="bg-blue-100 p-4 rounded-lg mb-6 shadow">
+          <h2 className="text-xl font-semibold mb-2 text-blue-800">
+            📈 Smart Insights
+          </h2>
+          <p className="text-blue-700">{insight}</p>
+        </div>
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
